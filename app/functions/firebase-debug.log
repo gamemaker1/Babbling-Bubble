@@ -1,0 +1,18 @@
+[debug] [2019-07-31T10:21:06.901Z] ----------------------------------------------------------------------
+[debug] [2019-07-31T10:21:06.902Z] Command:       /usr/bin/node /home/vedant/.npm-global/bin/firebase deploy
+[debug] [2019-07-31T10:21:06.902Z] CLI Version:   7.2.1
+[debug] [2019-07-31T10:21:06.902Z] Platform:      linux
+[debug] [2019-07-31T10:21:06.902Z] Node Version:  v10.15.2
+[debug] [2019-07-31T10:21:06.902Z] Time:          Wed Jul 31 2019 15:51:06 GMT+0530 (India Standard Time)
+[debug] [2019-07-31T10:21:06.902Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-31T10:21:06.909Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-31T10:21:06.909Z] > authorizing via signed-in user
+[debug] [2019-07-31T10:21:06.909Z] [iam] checking project babble-875f6 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-07-31T10:21:06.910Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-31T10:21:06.910Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-31T10:21:12.651Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-31T10:21:12.658Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/babble-875f6:testIamPermissions  
+
+[debug] [2019-07-31T10:21:14.490Z] <<< HTTP RESPONSE 200
