@@ -217,18 +217,35 @@ public class TodoActivity extends AppCompatActivity {
                                                         null)
                                                 );
 
-                                        SendNotificationForMessage("I have added the task " +
-                                                        addTaskEditText.getText().toString() + " !",
-                                                FirebaseAuth.getInstance()
-                                                        .getCurrentUser()
-                                                        .getDisplayName());
-
+                                        FirebaseDatabase.getInstance()
+                                                .getReference().child("messages")
+                                                .push()
+                                                .setValue(new UserMessage("I have added the " +
+                                                        "task " + addTaskEditText.getText().toString() + " !",
+                                                        FirebaseAuth.getInstance()
+                                                                .getCurrentUser()
+                                                                .getDisplayName(),
+                                                        null,
+                                                        bubbleInfo.get(0),
+                                                        false)
+                                                );
 
                                         FirebaseDatabase.getInstance()
                                                 .getReference().child("groups").child(Objects.requireNonNull(childHeaders.getKey())).child("todos")
                                                 .push()
                                                 .setValue(new TodoItem(addTaskEditText.getText().toString(),
                                                         null, todoId)
+                                                );
+
+                                        FirebaseDatabase.getInstance()
+                                                .getReference().child("groups").child(Objects.requireNonNull(childHeaders.getKey())).child("messages")
+                                                .push()
+                                                .setValue(new ChatMessage("I have added the " +
+                                                        "task " + addTaskEditText.getText().toString() + " !",
+                                                        FirebaseAuth.getInstance()
+                                                                .getCurrentUser()
+                                                                .getDisplayName(),
+                                                        null)
                                                 );
 
                                         // Clear the addTaskEditText
@@ -415,12 +432,18 @@ public class TodoActivity extends AppCompatActivity {
                                                         null)
                                                 );
 
-                                        SendNotificationForMessage("I have added the task " +
-                                                        addTaskEditText.getText().toString() + " !",
-                                                FirebaseAuth.getInstance()
-                                                        .getCurrentUser()
-                                                        .getDisplayName());
-
+                                        FirebaseDatabase.getInstance()
+                                                .getReference().child("messages")
+                                                .push()
+                                                .setValue(new UserMessage("I have added the " +
+                                                        "task " + addTaskEditText.getText().toString() + " !",
+                                                        FirebaseAuth.getInstance()
+                                                                .getCurrentUser()
+                                                                .getDisplayName(),
+                                                        null,
+                                                        bubbleInfo.get(0),
+                                                        false)
+                                                );
 
                                         FirebaseDatabase.getInstance()
                                                 .getReference().child("groups").child(Objects.requireNonNull(childHeaders.getKey())).child("todos")

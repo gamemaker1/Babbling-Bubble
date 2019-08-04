@@ -103,9 +103,6 @@ public class ItemDetail extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (final DataSnapshot childHeaders : dataSnapshot.getChildren()) {
 
-                                    // Read the input field and push a new instance
-                                    // of ChatMessage to the Firebase database
-
                                     FirebaseDatabase.getInstance()
                                             .getReference().child("groups").child(Objects.requireNonNull(childHeaders.getKey())).child("messages")
                                             .push()
@@ -117,11 +114,18 @@ public class ItemDetail extends AppCompatActivity {
                                                     null)
                                             );
 
-                                    SendNotificationForMessage("I have claimed the " +
-                                            "task " + itemTitleReceived + " !", FirebaseAuth
-                                            .getInstance()
-                                            .getCurrentUser()
-                                            .getDisplayName());
+                                    FirebaseDatabase.getInstance()
+                                            .getReference().child("messages")
+                                            .push()
+                                            .setValue(new UserMessage("I have claimed the " +
+                                                    "task " + itemTitleReceived + " !",
+                                                    FirebaseAuth.getInstance()
+                                                            .getCurrentUser()
+                                                            .getDisplayName(),
+                                                    null,
+                                                    bubbleInfo.get(0),
+                                                    false)
+                                            );
 
                                     final Query itemToRemoveId = FirebaseDatabase.getInstance()
                                             .getReference().child("groups").child(Objects.requireNonNull(childHeaders.getKey())).child("todos")
@@ -211,11 +215,18 @@ public class ItemDetail extends AppCompatActivity {
                                                     null)
                                             );
 
-                                    SendNotificationForMessage("Yay!! I completed" +
-                                    " the task " + itemTitleReceived + " !", FirebaseAuth
-                                            .getInstance()
-                                            .getCurrentUser()
-                                            .getDisplayName());
+                                    FirebaseDatabase.getInstance()
+                                            .getReference().child("messages")
+                                            .push()
+                                            .setValue(new UserMessage("Yay!! I completed" +
+                                                    " the task " + itemTitleReceived + " !",
+                                                    FirebaseAuth.getInstance()
+                                                            .getCurrentUser()
+                                                            .getDisplayName(),
+                                                    null,
+                                                    bubbleInfo.get(0),
+                                                    false)
+                                            );
 
                                     Query itemCompletedQuery = FirebaseDatabase.getInstance()
                                             .getReference().child("groups").child(Objects.requireNonNull(childHeaders.getKey())).child("todos")
