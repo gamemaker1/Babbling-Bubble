@@ -18,6 +18,7 @@ There are several bugs in the code:
 1. When you first install the app, the app will show the Home screen (`GroupsActivity`) with a `ProgressBar` going round and round forever. This is because you are not signed in and so, it cannot access the database. To get the app to work, you need to press the menu icon and then press the Sign Out option. This signs you out and gets you to the sign-in screen and then the app works smoothly.
 2. When you add a friend, it deletes the entire info about the group, including the messages and todos, and then recreates the group with the same Bubble (Chat group) name and id and the list of people in the group. The reason behind this is that in the `GroupItem` class, there is a setter for setting an ArrayList as the list of the people in the Bubble. But that setter doesn't work, we have no idea why.
 3. You cannot add multiple friends at once.
+4. You get notified about a message you yourself sent.
 
 Other than that, we still need to add useful comments in the code to let others know what we want to do.
 
