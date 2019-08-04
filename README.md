@@ -11,7 +11,8 @@ For troubleshooting, all you need to do is kill the app and then start it again.
 
 # Installation
 If you want to try out the app, you can go to the folder app in this repository. In this folder, you will see two subfolders called debug and release, which contain all APKs of this app. The debug APKs are test versions and may crash when you install them. The release APKs are the final, stable and working versions which you can use on an Android phone.
-You may distribute copies of this app among your friends, family or team members for use, but you must not reproduce or use this commercially. Any changes that you may make to the code must be open-sourced again and you must add a pull request for the changes you have made.
+You may distribute copies of this app among your friends, family or team members for use, but you must not reproduce or use this commercially. Any changes that you may make to the code must be open-sourced again and you must add a pull request for the changes you have made. If you want to change the code, please set up your own Firebase project and do not use the existing Firebase project.
+You will need to download an individual google-services.json by linking the app with your Firebase project
 
 # Todos
 There are several bugs in the code: 
