@@ -26,11 +26,11 @@ There are several bugs in the code:
 2. When you add a friend, it deletes the entire info about the group, including the messages and todos, and then recreates the group with the same Bubble (Chat group) name and id and the list of people in the group. The reason behind this is that in the `GroupItem` class, there is a setter for setting an ArrayList as the list of the people in the Bubble. But that setter doesn't work, we have no idea why.
 3. You cannot add multiple friends at once.
 4. There are no settings for the user (notifications, change password, update app, view app info, etc.)
-5. Try to create a web app using the same Database and Auth providers and same interface.
-6. Try to create a web app using [Solid](https://solid.inrupt.com/)
 
-
-Other than that, we still need to add useful comments in the code to let others know what we want to do.
+Apart from this, we still need to:
+1. Try to create a web app using the same Database and Auth providers and same interface.
+2. Try to create a web app using [Solid](https://solid.inrupt.com/)
+3. Add useful comments in the code to let others know what we want to do.
 
 # License Info
 Copyright (C) 2019  Vedant K
