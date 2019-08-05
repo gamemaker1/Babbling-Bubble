@@ -15,7 +15,7 @@ For troubleshooting, all you need to do is kill the app and then start it again.
 
 
 # Installation
-If you want to try out the app, you can go to the folder app in this repository. In this folder, you will see two subfolders called debug and release, which contain all APKs of this app. The debug APKs are test versions and may crash when you install them. The release APKs are the final, stable and working versions which you can use on an Android phone. You can also visit this link to find the APKs on Google Drive - https://drive.google.com/drive/folders/19ti7K6VNlwhNq70YjcckOWZdzqFeiOPI?usp=sharing.
+If you want to try out the app, you can go to the folder app in this repository. In this folder, you will see two subfolders called debug and release, which contain all APKs of this app. The debug APKs are test versions and may crash when you install them. The release APKs are the final, stable and working versions which you can use on an Android phone. You can also visit find the APKs on  [Google Drive](https://drive.google.com/drive/folders/19ti7K6VNlwhNq70YjcckOWZdzqFeiOPI?usp=sharing).
 You may distribute copies of this app among your friends, family or team members for use, but you must not reproduce or use this commercially. Any changes that you may make to the code must be open-sourced again and you must add a pull request for the changes you have made. If you want to change the code, please set up your own Firebase project and do not use the existing Firebase project.
 You will need to download an individual google-services.json by linking the app with your Firebase project.
 
@@ -26,6 +26,8 @@ There are several bugs in the code:
 2. When you add a friend, it deletes the entire info about the group, including the messages and todos, and then recreates the group with the same Bubble (Chat group) name and id and the list of people in the group. The reason behind this is that in the `GroupItem` class, there is a setter for setting an ArrayList as the list of the people in the Bubble. But that setter doesn't work, we have no idea why.
 3. You cannot add multiple friends at once.
 4. There are no settings for the user (notifications, change password, update app, view app info, etc.)
+5. Try to create a web app using the same Database and Auth providers and same interface.
+6. Try to create a web app using [Solid](https://solid.inrupt.com/)
 
 
 Other than that, we still need to add useful comments in the code to let others know what we want to do.
