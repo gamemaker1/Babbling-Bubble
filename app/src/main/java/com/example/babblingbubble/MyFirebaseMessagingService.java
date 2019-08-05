@@ -1,5 +1,16 @@
 package com.example.babblingbubble;
 
+/*
+Copyright (C) 2019 Vedant K
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
+
+*/
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,6 +24,7 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -26,40 +38,46 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        Log.w(TAG, "I AM IN MESSAGE RECEIVED NOW -" + remoteMessage.getNotification().getTitle());
-        Log.w(TAG, "I AM IN MESSAGE RECEIVED NOW -" + remoteMessage.getNotification().getBody());
+        Log.w(TAG, "Received Notification Title - " + remoteMessage.getNotification().getTitle());
+        Log.w(TAG, "Received Notification Body-" + remoteMessage.getNotification().getBody());
 
-        int notificationId = new Random().nextInt(3000);
+        if (!remoteMessage.getNotification().getTitle().contains(FirebaseAuth.getInstance().getCurrentUser().getDisplayName())) {
 
-        Intent intent = new Intent(this, ChatActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+            int notificationId = new Random().nextInt(3000);
 
-        String channelId = getString(R.string.default_notification_channel_id);
-        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(this, channelId)
-                        .setSmallIcon(R.drawable.chat)
-                        .setColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent))
-                        .setColorized(true)
-                        .setContentTitle(remoteMessage.getNotification().getTitle())
-                        .setContentText(remoteMessage.getNotification().getBody())
-                        .setAutoCancel(true)
-                        .setSound(defaultSoundUri)
-                        .setContentIntent(pendingIntent);
+            Intent intent = new Intent(this, ChatActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                    PendingIntent.FLAG_ONE_SHOT);
 
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            String channelId = getString(R.string.default_notification_channel_id);
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder =
+                    new NotificationCompat.Builder(this, channelId)
+                            .setSmallIcon(R.drawable.chat)
+                            .setColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent))
+                            .setColorized(true)
+                            .setContentTitle(remoteMessage.getNotification().getTitle())
+                            .setContentText(remoteMessage.getNotification().getBody())
+                            .setAutoCancel(true)
+                            .setSound(defaultSoundUri)
+                            .setContentIntent(pendingIntent);
 
-        // Since android Oreo notification channel is needed.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(channelId,
-                    "Babbling Bubble",
-                    NotificationManager.IMPORTANCE_DEFAULT);
-            notificationManager.createNotificationChannel(channel);
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            // Since android Oreo notification channel is needed.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(channelId,
+                        "Babbling Bubble",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+                notificationManager.createNotificationChannel(channel);
+            }
+
+            notificationManager.notify(notificationId, notificationBuilder.build());
+
+        } else {
+            // Do nothing, or else you will be sending self-notifications
         }
-
-        notificationManager.notify(notificationId, notificationBuilder.build());
 
     }
 
