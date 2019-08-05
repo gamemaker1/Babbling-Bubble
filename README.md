@@ -1,17 +1,16 @@
 # Babbling Bubble (or in short, Babble)
 This is a Chat App designed specially for friends, families and office commitees/teams using Firebase for Android.
 
-# How It Works
-In this Chat App, a user can sign up using their email address and a password. The auth process is managed completely by FirebaseAuth UI.
-They are then guided to the Home Screen (`GroupsActivity`) and shown the groups that they are a part of (using a `ListView` and `ArrayAdapter`). If there are no groups, a blank screen is displayed. There is also a small `+` button (`Floating Action Button`) at the bottom right corner which allows you to add groups. You can press the button, which takes you to another screen (`AddFriend`), where you enter a name for your Bubble (Chat room/group) and add other friends (Babblers) to it. You can however, add only 1 friend at a time. When you press the ADD FRIEND button, it opens up your preferred email app and fills in a message which you can edit. It also automatically fills in the To field witht he email address of the friend that you just entered. If you don't want to send an email, you can press the back button. It will still add the group, but it won't send an email to the friend.
+# Features
+**Sign-in/Sign-up** - Using email-password login.
 
-When you press on the name of a Bubble (Chat room/group), it opens up the chatting screen (`ChatActivity`) with the title of the screen set to the Bubble name. You can send messages or photos. If you tap on the little checkbox button, it will take you to the Todos screen (`TodoActivity`), where you can add tasks. Anyone can claim these tasks and complete them. Whenever you add/claim/complete a task, a message will appear in the chat automatically, saying that you have added/claimed/completed a task. You cannot assign tasks or set deadlines for them to be completed as of now. If you tap on a task, it will show you the details and the CLAIM and COMPLETED buttons.
+**Groups (Called Bubbles)** - Can be created by entering your friend's email address. It will also allow you to automatically send an email to the friend, alerting him/her via email that you have added him/her to the Bubble.
 
-Regarding account settings, not much has been done. In an effort to keep this app simple, we have not allowed users or groups to have their own icons/display photos and wish to keep it that way. Apart from this, we also lack a password and email reset option. Since we do store emails in the database, it becomes very difficult to implement the email reset option. However, we still need a password reset options, which could be achieved easily using FirebaseAuth. You also have options to sign out, delete your account, view group info if your in a chat screen or todo screen and view the acknowledgements page.
+**Chatting** - Simple text messages and images from your phone. You can also share text/links from other apps/websites, but not images as of yet.
 
-For notifications, we have used Firebase Cloud Functions, which functions as a reliable server that sends notifications even if the app is in the background.
+**Todos** - You can add todos for each group. Anyone can claim and complete the todos. As of now, you cannot assign the task to someone or set a deadline for completion.
 
-For troubleshooting, all you need to do is kill the app and then start it again. Press the square button on your phone and then locate the Babble screen and swipe it left or right to kill the app. Then press the app icon to start it up again.
+**Privacy Guarenteed** - This app uses [Firebase](https://firebase.google.com/) to manage authentication and store its data. Firebase is completely secure and trusted by a large number of tech companies. None of your data is sold to any other companies.
 
 
 # Installation
